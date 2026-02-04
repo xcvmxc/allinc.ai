@@ -30,23 +30,24 @@
             color: var(--fg);
             line-height: 1.5;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* SWISS WIDE - FULL BLEED */
+        /* RADICAL SWISS-WIDE: HARD-ANGLE GEOMETRIC BACKGROUNDS */
+
         h1 {
-            font-size: clamp(5rem, 20vw, 15rem);
+            font-size: clamp(5rem, 18vw, 12rem);
             font-weight: 900;
             letter-spacing: -0.05em;
-            line-height: 0.8;
+            line-height: 0.85;
             text-transform: uppercase;
         }
 
         h2 {
-            font-size: clamp(2rem, 5vw, 3rem);
+            font-size: clamp(2rem, 5vw, 4rem);
             font-weight: 900;
             letter-spacing: -0.02em;
             text-transform: uppercase;
-            color: var(--fg);
             margin-bottom: 3rem;
         }
 
@@ -64,7 +65,7 @@
             max-width: 65ch;
         }
 
-        /* FULL-BLEED HEADER */
+        /* HEADER WITH DIAGONAL GEOMETRIC PATTERN */
         header {
             min-height: 100vh;
             display: flex;
@@ -72,14 +73,49 @@
             justify-content: flex-end;
             padding: 4rem;
             position: relative;
-            overflow: hidden;
+            background: var(--bg);
+        }
+
+        /* Diagonal line pattern */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                linear-gradient(135deg, transparent 40%, #111 40%, #111 41%, transparent 41%),
+                linear-gradient(135deg, transparent 60%, #111 60%, #111 61%, transparent 61%),
+                linear-gradient(135deg, transparent 80%, #111 80%, #111 81%, transparent 81%);
+            pointer-events: none;
+        }
+
+        /* Large triangle accent */
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 0 50vh 50vw;
+            border-color: transparent transparent #111 transparent;
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
         }
 
         .header-links {
-            position: absolute;
+            position: fixed;
             top: 0;
             right: 0;
             display: flex;
+            z-index: 100;
         }
 
         .header-links a {
@@ -100,33 +136,6 @@
             color: var(--fg);
         }
 
-        .header-links .link-label {
-            display: none;
-        }
-
-        .name-block {
-            position: relative;
-        }
-
-        .name-block h1 {
-            position: relative;
-            z-index: 2;
-        }
-
-        .name-outline {
-            position: absolute;
-            top: 0.1em;
-            left: 0.1em;
-            font-size: clamp(5rem, 20vw, 15rem);
-            font-weight: 900;
-            letter-spacing: -0.05em;
-            line-height: 0.8;
-            text-transform: uppercase;
-            color: transparent;
-            -webkit-text-stroke: 1px #333;
-            z-index: 1;
-        }
-
         .subtitle {
             font-size: 1.5rem;
             font-weight: 400;
@@ -144,91 +153,102 @@
             text-transform: uppercase;
         }
 
-        /* FULL-BLEED SECTIONS */
+        /* SECTION BASE STYLES */
         section {
-            padding: 0;
-        }
-
-        .section-header {
-            background: var(--fg);
-            color: var(--bg);
-            padding: 4rem;
+            position: relative;
+            padding: 6rem 4rem;
         }
 
         .section-content {
-            padding: 4rem;
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        /* FORMAL SECTION */
-        .formal-section .section-content {
+        /* PROFESSIONAL SECTION - Diagonal split */
+        .formal-section {
+            background: var(--fg);
+            color: var(--bg);
+            clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
+            padding: 10rem 4rem;
+            margin-top: -5vh;
+        }
+
+        .formal-section h2 {
+            color: var(--bg);
+        }
+
+        .formal-section h3 {
+            color: var(--accent);
+        }
+
+        /* Diagonal accent stripe */
+        .formal-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                -45deg,
+                transparent 0%,
+                transparent 85%,
+                var(--accent) 85%,
+                var(--accent) 87%,
+                transparent 87%
+            );
+            pointer-events: none;
+        }
+
+        .formal {
             display: grid;
             grid-template-columns: 1fr;
             gap: 4rem;
         }
 
-        @media (min-width: 1000px) {
-            .formal-section .section-content {
-                grid-template-columns: 1fr 1fr;
-                gap: 0;
-            }
-        }
-
-        .formal-left {
-            padding-right: 4rem;
-        }
-
-        @media (min-width: 1000px) {
-            .formal-right {
-                padding-left: 4rem;
-                border-left: 1px solid #333;
+        @media (min-width: 900px) {
+            .formal {
+                grid-template-columns: 55% 45%;
+                gap: 6rem;
             }
         }
 
         .summary {
             font-size: 1.5rem;
-            line-height: 1.6;
+            line-height: 1.7;
             margin-bottom: 3rem;
             font-weight: 300;
         }
 
         .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
             margin-bottom: 3rem;
         }
 
         .skill {
-            background: transparent;
+            background: var(--bg);
             color: var(--fg);
-            padding: 1rem 0;
-            font-size: 1rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.875rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            border-bottom: 1px solid #333;
+            transition: all 0.15s ease;
         }
 
-        .skill:nth-child(odd) {
-            border-right: 1px solid #333;
-            padding-right: 1rem;
+        .skill:hover {
+            background: var(--accent);
         }
 
-        .skill:nth-child(even) {
-            padding-left: 1rem;
-        }
-
-        /* EXPERIENCE - TIMELINE */
+        /* EXPERIENCE */
         .experience-item {
-            display: grid;
-            grid-template-columns: 100px 1fr;
-            gap: 2rem;
-            padding: 2rem 0;
-            border-bottom: 1px solid #333;
-        }
-
-        .experience-item:first-of-type {
-            border-top: 1px solid #333;
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+            border-left: 4px solid var(--accent);
         }
 
         .company {
@@ -236,54 +256,59 @@
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: -0.02em;
-            line-height: 1;
         }
 
         .role {
-            font-size: 1rem;
+            font-size: 0.875rem;
             color: var(--accent);
             font-weight: 600;
-            margin: 0.5rem 0;
+            margin: 0.25rem 0;
             text-transform: uppercase;
             letter-spacing: 0.1em;
         }
 
         .period {
-            font-size: 0.875rem;
+            font-size: 0.75rem;
             color: var(--muted);
             font-family: monospace;
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            transform: rotate(180deg);
-            height: fit-content;
         }
 
-        .highlights {
-            margin-top: 1rem;
-            list-style: none;
-        }
-
-        .highlights li {
+        /* INFORMAL SECTION - Angular background */
+        .informal-section {
+            background: var(--bg);
             position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
+            padding: 8rem 4rem;
         }
 
-        .highlights li::before {
-            content: "→";
+        /* Triangular corner accent */
+        .informal-section::before {
+            content: '';
             position: absolute;
+            top: 0;
             left: 0;
-            color: var(--accent);
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 30vh 30vw 0 0;
+            border-color: var(--accent) transparent transparent transparent;
         }
 
-        /* INFORMAL - DARK BAND */
-        .informal .section-header {
-            background: var(--accent);
-        }
-
-        .informal .section-header h2 {
-            color: var(--fg);
+        /* Diagonal lines overlay */
+        .informal-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 100px,
+                #111 100px,
+                #111 101px
+            );
+            pointer-events: none;
         }
 
         .informal-content {
@@ -292,20 +317,21 @@
             gap: 4rem;
         }
 
-        @media (min-width: 1000px) {
+        @media (min-width: 900px) {
             .informal-content {
-                grid-template-columns: 2fr 1fr;
-                gap: 4rem;
+                grid-template-columns: 60% 40%;
+                gap: 6rem;
             }
         }
 
         .philosophy {
             font-size: 1.375rem;
-            line-height: 1.7;
+            line-height: 1.8;
         }
 
         .philosophy p {
             font-size: 1.375rem;
+            margin-bottom: 1.5rem;
         }
 
         .philosophy strong {
@@ -319,53 +345,68 @@
         }
 
         .interests li {
-            padding: 1.5rem 0;
-            font-size: 1.25rem;
+            padding: 1rem 0;
+            font-size: 1.125rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.1em;
             color: var(--fg);
-            border-bottom: 2px solid var(--accent);
+            border-bottom: 2px solid #333;
         }
 
-        /* CONTACT - FULL WIDTH BLOCKS */
-        .contact .section-header {
-            background: var(--bg);
-            border-top: 4px solid var(--fg);
+        .interests li:first-child {
+            border-top: 2px solid #333;
+        }
+
+        /* CONTACT SECTION - Sharp geometric */
+        .contact-section {
+            background: var(--accent);
+            color: var(--bg);
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+            padding: 10rem 4rem 6rem;
+        }
+
+        .contact-section h2 {
+            color: var(--bg);
+        }
+
+        /* Triangle pattern overlay */
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                linear-gradient(120deg, rgba(0,0,0,0.1) 25%, transparent 25%),
+                linear-gradient(240deg, rgba(0,0,0,0.1) 25%, transparent 25%);
+            background-size: 100px 100px;
+            pointer-events: none;
         }
 
         .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-        }
-
-        @media (min-width: 600px) {
-            .contact-grid {
-                grid-template-columns: repeat(5, 1fr);
-            }
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .contact-item a {
-            color: var(--bg);
-            background: var(--fg);
+            color: var(--accent);
+            background: var(--bg);
             text-decoration: none;
             font-size: 1rem;
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
             display: block;
-            padding: 2rem;
+            padding: 1.5rem 2rem;
             transition: all 0.15s ease;
-            text-align: center;
         }
 
         .contact-item a:hover {
-            background: var(--accent);
-            color: var(--fg);
-        }
-
-        .contact-label {
-            display: none;
+            background: var(--fg);
+            color: var(--bg);
         }
 
         footer {
@@ -375,9 +416,19 @@
 
         /* RESPONSIVE */
         @media (max-width: 900px) {
-            header {
-                padding: 2rem;
-                min-height: 80vh;
+            header,
+            section {
+                padding: 4rem 2rem;
+            }
+
+            .formal-section {
+                clip-path: polygon(0 0, 100% 2%, 100% 100%, 0 98%);
+                padding: 8rem 2rem;
+            }
+
+            .contact-section {
+                clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+                padding: 8rem 2rem 4rem;
             }
 
             .header-links {
@@ -385,181 +436,140 @@
                 margin-bottom: 2rem;
             }
 
-            .name-outline {
-                display: none;
+            header::after {
+                border-width: 0 0 30vh 40vw;
             }
 
-            .section-header,
-            .section-content {
-                padding: 2rem;
-            }
-
-            .formal-left {
-                padding-right: 0;
-            }
-
-            .formal-right {
-                padding-left: 0;
-                border-left: none;
-            }
-
-            .experience-item {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .period {
-                writing-mode: horizontal-tb;
-                transform: none;
+            .informal-section::before {
+                border-width: 20vh 25vw 0 0;
             }
         }
 
         @media (max-width: 600px) {
-            header {
-                padding: 1rem;
-            }
-
             h1 {
-                font-size: clamp(2.5rem, 15vw, 6rem);
+                font-size: clamp(3rem, 15vw, 6rem);
             }
 
             .header-links a {
                 padding: 1rem;
             }
 
-            .section-header,
-            .section-content {
-                padding: 1.5rem;
+            .formal-section,
+            .contact-section {
+                clip-path: none;
             }
 
-            .skills-grid {
-                grid-template-columns: 1fr;
+            header::before,
+            header::after,
+            .informal-section::before {
+                display: none;
             }
 
-            .skill {
-                border-right: none !important;
-                padding-left: 0 !important;
-                padding-right: 0 !important;
+            .summary {
+                font-size: 1.25rem;
             }
 
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-item a {
-                padding: 1.5rem;
+            .company {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
+    <div class="header-links">
+        <a href="mailto:hello@allinc.ai">Email</a>
+        <a href="https://www.linkedin.com/in/roman-kliukin/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://docs.google.com/document/d/1WkiR09nSAwJDy7E6YqJiDGgJBzoKIqp740ikq_DhN34/edit?tab=t.0#heading=h.72pd2otns95o" target="_blank" rel="noopener">CV</a>
+    </div>
+
     <header>
-        <div class="header-links">
-            <a href="mailto:hello@allinc.ai">Email</a>
-            <a href="https://www.linkedin.com/in/roman-kliukin/" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://docs.google.com/document/d/1WkiR09nSAwJDy7E6YqJiDGgJBzoKIqp740ikq_DhN34/edit?tab=t.0#heading=h.72pd2otns95o" target="_blank" rel="noopener">CV</a>
-        </div>
-        <div class="name-block">
-            <span class="name-outline" aria-hidden="true">Roman<br>Kliukin</span>
+        <div class="header-content">
             <h1>Roman<br>Kliukin</h1>
+            <p class="subtitle">Product Manager</p>
+            <p class="location">Belgrade, Serbia</p>
         </div>
-        <p class="subtitle">Product Manager</p>
-        <p class="location">Belgrade, Serbia</p>
     </header>
 
     <section class="formal-section">
-        <div class="section-header">
-            <h2>Professional</h2>
-        </div>
-
         <div class="section-content">
-            <div class="formal-left">
-                <p class="summary">Product Manager with 3+ years of experience in EdTech, integrating AI/ML technologies into educational products. Background includes 12+ years in product design with progression to leadership. Delivered measurable results: 83% user growth year-over-year, 67% reduction in development cycles, and national-scale product launches.</p>
+            <h2>Professional</h2>
 
-                <h3>Skills</h3>
-                <div class="skills-grid">
-                    <span class="skill">Product Strategy</span>
-                    <span class="skill">Cross-functional Leadership</span>
-                    <span class="skill">Data-driven Decisions</span>
-                    <span class="skill">User Research</span>
-                    <span class="skill">A/B Testing</span>
-                    <span class="skill">Agile/Scrum</span>
+            <div class="formal">
+                <div>
+                    <p class="summary">Product Manager with 3+ years of experience in EdTech, integrating AI/ML technologies into educational products. Background includes 12+ years in product design with progression to leadership. Delivered measurable results: 83% user growth year-over-year, 67% reduction in development cycles, and national-scale product launches.</p>
+
+                    <h3>Skills</h3>
+                    <div class="skills-grid">
+                        <span class="skill">Product Strategy</span>
+                        <span class="skill">Cross-functional Leadership</span>
+                        <span class="skill">Data-driven Decisions</span>
+                        <span class="skill">User Research</span>
+                        <span class="skill">A/B Testing</span>
+                        <span class="skill">Agile/Scrum</span>
+                    </div>
+
+                    <h3>Tools</h3>
+                    <div class="skills-grid">
+                        <span class="skill">Python</span>
+                        <span class="skill">LLMs</span>
+                        <span class="skill">Google Analytics</span>
+                        <span class="skill">Jira</span>
+                        <span class="skill">Confluence</span>
+                        <span class="skill">Figma</span>
+                        <span class="skill">Miro</span>
+                    </div>
                 </div>
 
-                <h3>Tools</h3>
-                <div class="skills-grid">
-                    <span class="skill">Python</span>
-                    <span class="skill">LLMs</span>
-                    <span class="skill">Google Analytics</span>
-                    <span class="skill">Jira</span>
-                    <span class="skill">Confluence</span>
-                    <span class="skill">Figma</span>
-                    <span class="skill">Miro</span>
-                    <span class="skill">Trello</span>
-                </div>
-            </div>
+                <div>
+                    <h3>Experience</h3>
 
-            <div class="formal-right">
-                <h3>Experience</h3>
-
-                <div class="experience-item">
-                    <p class="period">2022 — Now</p>
-                    <div>
+                    <div class="experience-item">
                         <p class="company">Yandex</p>
                         <p class="role">Product Manager</p>
+                        <p class="period">2022 — Present</p>
                     </div>
-                </div>
 
-                <div class="experience-item">
-                    <p class="period">2021 — 2022</p>
-                    <div>
+                    <div class="experience-item">
                         <p class="company">Yandex</p>
                         <p class="role">Head of Design</p>
+                        <p class="period">2021 — 2022</p>
                     </div>
-                </div>
 
-                <div class="experience-item">
-                    <p class="period">2019 — 2021</p>
-                    <div>
+                    <div class="experience-item">
                         <p class="company">EPAM</p>
                         <p class="role">Senior Product Designer</p>
+                        <p class="period">2019 — 2021</p>
                     </div>
-                </div>
 
-                <div class="experience-item">
-                    <p class="period">2015 — 2019</p>
-                    <div>
+                    <div class="experience-item">
                         <p class="company">Netrika</p>
                         <p class="role">Product Designer</p>
+                        <p class="period">2015 — 2019</p>
                     </div>
-                </div>
 
-                <div class="experience-item">
-                    <p class="period">2013 — 2015</p>
-                    <div>
+                    <div class="experience-item">
                         <p class="company">Yandex</p>
                         <p class="role">Product Designer</p>
+                        <p class="period">2013 — 2015</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="informal">
-        <div class="section-header">
-            <h2>Beyond Work</h2>
-        </div>
-
+    <section class="informal-section">
         <div class="section-content">
+            <h2>Beyond Work</h2>
+
             <div class="informal-content">
                 <div class="philosophy">
                     <p>I live in Belgrade and try to understand how <strong>complex systems</strong> work — not in theory, but by building things that actually function.</p>
 
-                    <p style="margin-top: 1.5rem;">I'm studying LLM Engineering because I want to understand how these technologies work from the inside, not just use them. Currently building <strong>Marcus</strong>, a macOS app for syncing reminders with Obsidian — it solves my real problem with forgotten tasks while teaching me SwiftUI.</p>
+                    <p>I'm studying LLM Engineering because I want to understand how these technologies work from the inside, not just use them. Currently building <strong>Marcus</strong>, a macOS app for syncing reminders with Obsidian.</p>
 
-                    <p style="margin-top: 1.5rem;"><strong>Stoic philosophy</strong> resonates with me, especially Marcus Aurelius. Not "stoically endure" — but distinguishing what's in your control from what isn't, and not wasting energy on the latter. It's about focusing on the process.</p>
+                    <p><strong>Stoic philosophy</strong> resonates with me, especially Marcus Aurelius. Not "stoically endure" — but distinguishing what's in your control from what isn't.</p>
 
-                    <p style="margin-top: 1.5rem;">That's why I love precise cooking techniques like <strong>sous vide</strong> — control the variables, get predictable results. I'm interested in evidence-based approaches to learning: how memory, attention, and skill formation actually work.</p>
+                    <p>That's why I love precise cooking techniques like <strong>sous vide</strong> — control the variables, get predictable results.</p>
                 </div>
 
                 <div>
@@ -569,32 +579,33 @@
                         <li>SwiftUI / macOS</li>
                         <li>Stoic Philosophy</li>
                         <li>Sous Vide Cooking</li>
-                        <li>Evidence-based Learning</li>
+                        <li>Learning Science</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="contact">
-        <div class="section-header">
+    <section class="contact-section">
+        <div class="section-content">
             <h2>Contact</h2>
-        </div>
-        <div class="contact-grid">
-            <div class="contact-item">
-                <a href="mailto:hello@allinc.ai">hello@allinc.ai</a>
-            </div>
-            <div class="contact-item">
-                <a href="tel:+381621424895">+381 62 142 4895</a>
-            </div>
-            <div class="contact-item">
-                <a href="https://www.linkedin.com/in/roman-kliukin/" target="_blank" rel="noopener">LinkedIn</a>
-            </div>
-            <div class="contact-item">
-                <a href="https://docs.google.com/document/d/1WkiR09nSAwJDy7E6YqJiDGgJBzoKIqp740ikq_DhN34/edit?tab=t.0#heading=h.72pd2otns95o" target="_blank" rel="noopener">CV</a>
-            </div>
-            <div class="contact-item">
-                <a href="https://docs.google.com/document/d/1HHT5RXopo2qIFAmhHvhSCje-okmhsNZQh7J-MDvVlmw/edit?tab=t.0#heading=h.72pd2otns95o" target="_blank" rel="noopener">Резюме</a>
+
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <a href="mailto:hello@allinc.ai">hello@allinc.ai</a>
+                </div>
+                <div class="contact-item">
+                    <a href="tel:+381621424895">+381 62 142 4895</a>
+                </div>
+                <div class="contact-item">
+                    <a href="https://www.linkedin.com/in/roman-kliukin/" target="_blank" rel="noopener">LinkedIn</a>
+                </div>
+                <div class="contact-item">
+                    <a href="https://docs.google.com/document/d/1WkiR09nSAwJDy7E6YqJiDGgJBzoKIqp740ikq_DhN34/edit?tab=t.0#heading=h.72pd2otns95o" target="_blank" rel="noopener">CV</a>
+                </div>
+                <div class="contact-item">
+                    <a href="https://docs.google.com/document/d/1HHT5RXopo2qIFAmhHvhSCje-okmhsNZQh7J-MDvVlmw/edit?tab=t.0#heading=h.72pd2otns95o" target="_blank" rel="noopener">Резюме</a>
+                </div>
             </div>
         </div>
     </section>
