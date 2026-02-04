@@ -3,25 +3,499 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>allinc.ai</title>
+    <title>Roman Kliukin — Product Manager</title>
+    <meta name="description" content="Product Manager with 3+ years in EdTech, 12+ years in product design. Building AI-powered educational products.">
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+        * {
             margin: 0;
-            background: #0a0a0a;
-            color: #fff;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        :root {
+            --bg: #0a0a0a;
+            --fg: #ffffff;
+            --accent: #ff3e00;
+            --muted: #666666;
+            --border: #333333;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+
+        /* BRUTALIST TYPOGRAPHY */
         h1 {
-            font-size: 3rem;
-            font-weight: 300;
+            font-size: clamp(3rem, 15vw, 12rem);
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            line-height: 0.9;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 5vw, 3rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            border-bottom: 4px solid var(--fg);
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.125rem;
+            max-width: 65ch;
+        }
+
+        /* LAYOUT */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding-bottom: 4rem;
+            border-bottom: 4px solid var(--fg);
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--muted);
+            margin-top: 1rem;
+        }
+
+        .location {
+            font-size: 1.25rem;
+            margin-top: 0.5rem;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 6rem 0;
+            border-bottom: 4px solid var(--fg);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        /* FORMAL SECTION */
+        .formal {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+
+        @media (min-width: 900px) {
+            .formal {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .summary {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            border-left: 4px solid var(--accent);
+            padding-left: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .skill {
+            background: var(--fg);
+            color: var(--bg);
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .tool {
+            border: 2px solid var(--fg);
+            background: transparent;
+            color: var(--fg);
+        }
+
+        /* EXPERIENCE */
+        .experience-item {
+            margin-bottom: 3rem;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--border);
+        }
+
+        .experience-item:hover {
+            border-left-color: var(--accent);
+        }
+
+        .company {
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .role {
+            font-size: 1rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin: 0.25rem 0;
+        }
+
+        .period {
+            font-size: 0.875rem;
+            color: var(--muted);
+            font-family: monospace;
+        }
+
+        .highlights {
+            margin-top: 1rem;
+            list-style: none;
+        }
+
+        .highlights li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .highlights li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* INFORMAL SECTION */
+        .informal {
+            background: var(--fg);
+            color: var(--bg);
+            margin: 0 -2rem;
+            padding: 6rem 2rem;
+        }
+
+        .informal h2 {
+            border-bottom-color: var(--bg);
+        }
+
+        .informal h3 {
+            color: var(--bg);
+            opacity: 0.6;
+        }
+
+        .informal-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        @media (min-width: 900px) {
+            .informal-content {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        .philosophy {
+            font-size: 1.25rem;
+            line-height: 1.8;
+        }
+
+        .philosophy strong {
+            background: var(--bg);
+            color: var(--fg);
+            padding: 0.1em 0.3em;
+        }
+
+        .interests {
+            list-style: none;
+        }
+
+        .interests li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .os-block {
+            background: var(--bg);
+            color: var(--fg);
+            padding: 2rem;
+            margin-top: 2rem;
+            font-family: monospace;
+        }
+
+        .os-block code {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* CONTACT */
+        .contact {
+            padding: 4rem 0;
+        }
+
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .contact-item a {
+            color: var(--fg);
+            text-decoration: none;
+            font-size: 1.25rem;
+            font-weight: 700;
+            display: block;
+            padding: 1.5rem;
+            border: 3px solid var(--fg);
+            transition: all 0.15s ease;
+        }
+
+        .contact-item a:hover {
+            background: var(--fg);
+            color: var(--bg);
+        }
+
+        .contact-label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .contact-item a:hover .contact-label {
+            color: var(--bg);
+            opacity: 0.6;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--muted);
+            font-family: monospace;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+
+            header {
+                min-height: 80vh;
+                padding-bottom: 2rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .informal {
+                margin: 0 -1rem;
+                padding: 3rem 1rem;
+            }
+
+            .experience-item {
+                padding-left: 1rem;
+            }
+
+            .contact-item a {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>allinc.ai</h1>
+    <div class="container">
+        <header>
+            <h1>Roman<br>Kliukin</h1>
+            <p class="subtitle">Product Manager</p>
+            <p class="location">Belgrade, Serbia</p>
+        </header>
+
+        <section class="formal-section">
+            <h2>Professional</h2>
+
+            <p class="summary">Product Manager with 3+ years of experience in EdTech, integrating AI/ML technologies into educational products. Background includes 12+ years in product design with progression to leadership. Delivered measurable results: 83% user growth year-over-year, 67% reduction in development cycles, and national-scale product launches.</p>
+
+            <div class="formal">
+                <div>
+                    <h3>Skills</h3>
+                    <div class="skills-grid">
+                        <span class="skill">AI/ML Product Management</span>
+                        <span class="skill">Product Strategy</span>
+                        <span class="skill">Cross-functional Leadership</span>
+                        <span class="skill">Data-driven Decisions</span>
+                        <span class="skill">User Research</span>
+                        <span class="skill">A/B Testing</span>
+                        <span class="skill">Agile/Scrum</span>
+                        <span class="skill">Accessibility (WCAG)</span>
+                    </div>
+
+                    <h3>Tools</h3>
+                    <div class="skills-grid">
+                        <span class="skill tool">Python</span>
+                        <span class="skill tool">LLMs</span>
+                        <span class="skill tool">Google Analytics</span>
+                        <span class="skill tool">Jira</span>
+                        <span class="skill tool">Confluence</span>
+                        <span class="skill tool">Figma</span>
+                        <span class="skill tool">Miro</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3>Experience</h3>
+
+                    <div class="experience-item">
+                        <p class="company">Yandex</p>
+                        <p class="role">Product Manager → Head of Design</p>
+                        <p class="period">2021 — Present</p>
+                        <ul class="highlights">
+                            <li>Grew unique users by 83% to 6.19M YoY</li>
+                            <li>Reduced dev cycles by 67%</li>
+                            <li>Reached 89% of CS teachers in Russia</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <p class="company">EPAM Systems</p>
+                        <p class="role">Senior Product Designer</p>
+                        <p class="period">2019 — 2021</p>
+                    </div>
+
+                    <div class="experience-item">
+                        <p class="company">Netrika</p>
+                        <p class="role">Product Designer</p>
+                        <p class="period">2015 — 2019</p>
+                        <ul class="highlights">
+                            <li>Government services for 2M+ users</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <p class="company">Yandex</p>
+                        <p class="role">Product Designer</p>
+                        <p class="period">2013 — 2015</p>
+                        <ul class="highlights">
+                            <li>Generated 60% of Ad Network revenue</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="informal">
+            <h2>Beyond Work</h2>
+
+            <div class="informal-content">
+                <div class="philosophy">
+                    <p>I live in Belgrade and try to understand how <strong>complex systems</strong> work — not in theory, but by building things that actually function.</p>
+
+                    <p style="margin-top: 1.5rem;">I'm studying LLM Engineering because I want to understand how these technologies work from the inside, not just use them. Currently building <strong>Marcus</strong>, a macOS app for syncing reminders with Obsidian — it solves my real problem with forgotten tasks while teaching me SwiftUI.</p>
+
+                    <p style="margin-top: 1.5rem;"><strong>Stoic philosophy</strong> resonates with me, especially Marcus Aurelius. Not "stoically endure" — but distinguishing what's in your control from what isn't, and not wasting energy on the latter. It's about focusing on the process.</p>
+
+                    <p style="margin-top: 1.5rem;">That's why I love precise techniques like <strong>sous vide</strong> — control the variables, get predictable results. I'm interested in evidence-based approaches to learning: how memory, attention, and skill formation actually work.</p>
+                </div>
+
+                <div>
+                    <h3>Interests</h3>
+                    <ul class="interests">
+                        <li>LLM Engineering</li>
+                        <li>SwiftUI / macOS Development</li>
+                        <li>Stoic Philosophy</li>
+                        <li>Deliberate Practice</li>
+                        <li>Sous Vide Cooking</li>
+                        <li>Evidence-based Learning</li>
+                    </ul>
+
+                    <div class="os-block">
+                        <code>// my_operating_system.h</code>
+                        <code>VISUAL_LEARNER = true</code>
+                        <code>NEEDS_WORKFLOW_CONTROL = true</code>
+                        <code>COGNITIVE_OVERLOAD_HANDLER = {</code>
+                        <code>&nbsp;&nbsp;checklists,</code>
+                        <code>&nbsp;&nbsp;simple_interfaces,</code>
+                        <code>&nbsp;&nbsp;fixed_sessions</code>
+                        <code>}</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact">
+            <h2>Contact</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <a href="mailto:hello@allinc.ai">
+                        <span class="contact-label">Email</span>
+                        hello@allinc.ai
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="tel:+381621424895">
+                        <span class="contact-label">Phone</span>
+                        +381 62 142 4895
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="https://linkedin.com/in/romankliukin" target="_blank" rel="noopener">
+                        <span class="contact-label">LinkedIn</span>
+                        /romankliukin
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2025 Roman Kliukin — Built with brutalist aesthetics</p>
+        </footer>
+    </div>
 </body>
 </html>
