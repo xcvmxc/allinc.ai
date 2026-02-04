@@ -36,7 +36,7 @@
         h1 {
             font-size: clamp(3rem, 15vw, 12rem);
             font-weight: 900;
-            letter-spacing: 0.075em;
+            letter-spacing: 0.0375em;
             line-height: 0.9;
             text-transform: uppercase;
         }
@@ -47,8 +47,6 @@
             letter-spacing: -0.03em;
             text-transform: uppercase;
             margin-bottom: 2rem;
-            padding-left: 1.5rem;
-            border-left: 4px solid var(--accent);
         }
 
         h3 {
@@ -78,7 +76,7 @@
         }
 
         header {
-            min-height: 56vh;
+            min-height: 75vh;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -149,6 +147,8 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 4rem;
+            padding-left: 1.5rem;
+            border-left: 4px solid var(--accent);
         }
 
         @media (min-width: 900px) {
@@ -173,8 +173,8 @@
         .skill {
             background: var(--fg);
             color: var(--bg);
-            padding: 0.5rem 1rem;
-            font-size: 0.875rem;
+            padding: 0.625rem 1.25rem;
+            font-size: 1.1rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
@@ -235,6 +235,8 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 3rem;
+            padding-left: 1.5rem;
+            border-left: 4px solid var(--accent);
         }
 
         @media (min-width: 900px) {
@@ -326,7 +328,7 @@
             }
 
             header {
-                min-height: 45vh;
+                min-height: 60vh;
                 padding-bottom: 2rem;
             }
 
@@ -381,14 +383,12 @@
 
                     <h3>Skills</h3>
                     <div class="skills-grid">
-                        <span class="skill">AI/ML Product Management</span>
                         <span class="skill">Product Strategy</span>
                         <span class="skill">Cross-functional Leadership</span>
                         <span class="skill">Data-driven Decisions</span>
                         <span class="skill">User Research</span>
                         <span class="skill">A/B Testing</span>
                         <span class="skill">Agile/Scrum</span>
-                        <span class="skill">Accessibility (WCAG)</span>
                     </div>
 
                     <h3>Tools</h3>
@@ -400,6 +400,8 @@
                         <span class="skill tool">Confluence</span>
                         <span class="skill tool">Figma</span>
                         <span class="skill tool">Miro</span>
+                        <span class="skill tool">Trello</span>
+                        <span class="skill tool">Slack</span>
                     </div>
                 </div>
 
@@ -433,18 +435,12 @@
                         <p class="company">Netrika</p>
                         <p class="role">Product Designer</p>
                         <p class="period">2015 — 2019</p>
-                        <ul class="highlights">
-                            <li>Government services for 2M+ users</li>
-                        </ul>
                     </div>
 
                     <div class="experience-item">
                         <p class="company">Yandex</p>
                         <p class="role">Product Designer</p>
                         <p class="period">2013 — 2015</p>
-                        <ul class="highlights">
-                            <li>Generated 60% of Ad Network revenue</li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -470,7 +466,6 @@
                         <li>LLM Engineering</li>
                         <li>SwiftUI / macOS Development</li>
                         <li>Stoic Philosophy</li>
-                        <li>Deliberate Practice</li>
                         <li>Sous Vide Cooking</li>
                         <li>Evidence-based Learning</li>
                     </ul>
