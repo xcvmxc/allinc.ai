@@ -36,7 +36,7 @@
         h1 {
             font-size: clamp(3rem, 15vw, 12rem);
             font-weight: 900;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.075em;
             line-height: 0.9;
             text-transform: uppercase;
         }
@@ -47,6 +47,8 @@
             letter-spacing: -0.03em;
             text-transform: uppercase;
             margin-bottom: 2rem;
+            padding-left: 1.5rem;
+            border-left: 4px solid var(--accent);
         }
 
         h3 {
@@ -56,6 +58,11 @@
             letter-spacing: 0.1em;
             color: var(--accent);
             margin-bottom: 1rem;
+        }
+
+        h3.with-line {
+            padding-left: 1.5rem;
+            border-left: 4px solid var(--accent);
         }
 
         p {
@@ -71,7 +78,7 @@
         }
 
         header {
-            min-height: 75vh;
+            min-height: 56vh;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -85,20 +92,37 @@
             right: 0;
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
-            gap: 0.5rem;
+            gap: 1rem;
+            min-width: 280px;
         }
 
         .header-links a {
             color: var(--fg);
             text-decoration: none;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: color 0.15s ease;
+            font-size: 1.25rem;
+            font-weight: 700;
+            display: block;
+            padding: 1.5rem;
+            background: #000000;
+            transition: all 0.15s ease;
         }
 
         .header-links a:hover {
-            color: var(--accent);
+            background: var(--accent);
+        }
+
+        .header-links .link-label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .header-links a:hover .link-label {
+            color: var(--fg);
         }
 
         .subtitle {
@@ -136,7 +160,7 @@
         .summary {
             font-size: 1.25rem;
             line-height: 1.6;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         .skills-grid {
@@ -230,6 +254,8 @@
 
         .interests {
             list-style: none;
+            padding-left: 1.5rem;
+            border-left: 4px solid var(--accent);
         }
 
         .interests li {
@@ -300,15 +326,19 @@
             }
 
             header {
-                min-height: 60vh;
+                min-height: 45vh;
                 padding-bottom: 2rem;
             }
 
             .header-links {
                 position: static;
-                flex-direction: row;
+                flex-direction: column;
                 margin-top: 2rem;
-                gap: 1.5rem;
+                min-width: auto;
+            }
+
+            .header-links a {
+                padding: 1rem;
             }
 
             section {
@@ -329,8 +359,14 @@
     <div class="container">
         <header>
             <div class="header-links">
-                <a href="mailto:hello@allinc.ai">hello@allinc.ai</a>
-                <a href="https://www.linkedin.com/in/romankliukin" target="_blank" rel="noopener">linkedin.com/in/romankliukin</a>
+                <a href="mailto:hello@allinc.ai">
+                    <span class="link-label">Email</span>
+                    hello@allinc.ai
+                </a>
+                <a href="https://www.linkedin.com/in/romankliukin" target="_blank" rel="noopener">
+                    <span class="link-label">LinkedIn</span>
+                    linkedin.com/in/romankliukin
+                </a>
             </div>
             <h1>Roman<br>Kliukin</h1>
             <p class="subtitle">Product Manager</p>
@@ -340,10 +376,10 @@
         <section class="formal-section">
             <h2>Professional</h2>
 
-            <p class="summary">Product Manager with 3+ years of experience in EdTech, integrating AI/ML technologies into educational products. Background includes 12+ years in product design with progression to leadership. Delivered measurable results: 83% user growth year-over-year, 67% reduction in development cycles, and national-scale product launches.</p>
-
             <div class="formal">
                 <div>
+                    <p class="summary">Product Manager with 3+ years of experience in EdTech, integrating AI/ML technologies into educational products. Background includes 12+ years in product design with progression to leadership. Delivered measurable results: 83% user growth year-over-year, 67% reduction in development cycles, and national-scale product launches.</p>
+
                     <h3>Skills</h3>
                     <div class="skills-grid">
                         <span class="skill">AI/ML Product Management</span>
