@@ -86,7 +86,7 @@
 
         .header-links {
             position: absolute;
-            top: 0;
+            top: 2rem;
             right: 0;
             display: flex;
             flex-direction: column;
@@ -152,11 +152,6 @@
         @media (min-width: 900px) {
             .formal {
                 grid-template-columns: 1fr 1fr;
-            }
-
-            .formal > div:last-child {
-                justify-self: end;
-                text-align: left;
             }
         }
 
@@ -244,15 +239,11 @@
             .informal-content {
                 grid-template-columns: 2fr 1fr;
             }
-
-            .informal-content > div:last-child {
-                justify-self: end;
-            }
         }
 
         .philosophy {
             font-size: 1.5rem;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
         .philosophy strong {
