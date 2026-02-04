@@ -17,7 +17,6 @@
             --fg: #ffffff;
             --accent: #ff3e00;
             --muted: #666666;
-            --border: #333333;
         }
 
         html {
@@ -37,7 +36,7 @@
         h1 {
             font-size: clamp(3rem, 15vw, 12rem);
             font-weight: 900;
-            letter-spacing: -0.05em;
+            letter-spacing: 0.1em;
             line-height: 0.9;
             text-transform: uppercase;
         }
@@ -47,8 +46,6 @@
             font-weight: 900;
             letter-spacing: -0.03em;
             text-transform: uppercase;
-            border-bottom: 4px solid var(--fg);
-            padding-bottom: 0.5rem;
             margin-bottom: 2rem;
         }
 
@@ -74,20 +71,42 @@
         }
 
         header {
-            min-height: 100vh;
+            min-height: 75vh;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             padding-bottom: 4rem;
-            border-bottom: 4px solid var(--fg);
+            position: relative;
+        }
+
+        .header-links {
+            position: absolute;
+            top: 2rem;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.5rem;
+        }
+
+        .header-links a {
+            color: var(--fg);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.15s ease;
+        }
+
+        .header-links a:hover {
+            color: var(--accent);
         }
 
         .subtitle {
             font-size: clamp(1rem, 3vw, 1.5rem);
-            font-weight: 400;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.2em;
-            color: var(--muted);
+            color: var(--accent);
             margin-top: 1rem;
         }
 
@@ -99,11 +118,6 @@
         /* SECTIONS */
         section {
             padding: 6rem 0;
-            border-bottom: 4px solid var(--fg);
-        }
-
-        section:last-of-type {
-            border-bottom: none;
         }
 
         /* FORMAL SECTION */
@@ -122,8 +136,6 @@
         .summary {
             font-size: 1.25rem;
             line-height: 1.6;
-            border-left: 4px solid var(--accent);
-            padding-left: 1.5rem;
             margin-bottom: 3rem;
         }
 
@@ -145,7 +157,6 @@
         }
 
         .tool {
-            border: 2px solid var(--fg);
             background: transparent;
             color: var(--fg);
         }
@@ -154,11 +165,7 @@
         .experience-item {
             margin-bottom: 3rem;
             padding-left: 1.5rem;
-            border-left: 2px solid var(--border);
-        }
-
-        .experience-item:hover {
-            border-left-color: var(--accent);
+            border-left: 4px solid var(--accent);
         }
 
         .company {
@@ -200,22 +207,6 @@
         }
 
         /* INFORMAL SECTION */
-        .informal {
-            background: var(--fg);
-            color: var(--bg);
-            margin: 0 -2rem;
-            padding: 6rem 2rem;
-        }
-
-        .informal h2 {
-            border-bottom-color: var(--bg);
-        }
-
-        .informal h3 {
-            color: var(--bg);
-            opacity: 0.6;
-        }
-
         .informal-content {
             display: grid;
             grid-template-columns: 1fr;
@@ -234,9 +225,7 @@
         }
 
         .philosophy strong {
-            background: var(--bg);
-            color: var(--fg);
-            padding: 0.1em 0.3em;
+            color: var(--accent);
         }
 
         .interests {
@@ -245,22 +234,8 @@
 
         .interests li {
             padding: 0.75rem 0;
-            border-bottom: 1px solid var(--border);
             font-size: 1rem;
             font-weight: 500;
-        }
-
-        .os-block {
-            background: var(--bg);
-            color: var(--fg);
-            padding: 2rem;
-            margin-top: 2rem;
-            font-family: monospace;
-        }
-
-        .os-block code {
-            display: block;
-            margin-bottom: 0.5rem;
         }
 
         /* CONTACT */
@@ -287,13 +262,12 @@
             font-weight: 700;
             display: block;
             padding: 1.5rem;
-            border: 3px solid var(--fg);
+            background: #000000;
             transition: all 0.15s ease;
         }
 
         .contact-item a:hover {
-            background: var(--fg);
-            color: var(--bg);
+            background: var(--accent);
         }
 
         .contact-label {
@@ -307,8 +281,7 @@
         }
 
         .contact-item a:hover .contact-label {
-            color: var(--bg);
-            opacity: 0.6;
+            color: var(--fg);
         }
 
         /* FOOTER */
@@ -327,17 +300,19 @@
             }
 
             header {
-                min-height: 80vh;
+                min-height: 60vh;
                 padding-bottom: 2rem;
+            }
+
+            .header-links {
+                position: static;
+                flex-direction: row;
+                margin-top: 2rem;
+                gap: 1.5rem;
             }
 
             section {
                 padding: 3rem 0;
-            }
-
-            .informal {
-                margin: 0 -1rem;
-                padding: 3rem 1rem;
             }
 
             .experience-item {
@@ -353,6 +328,10 @@
 <body>
     <div class="container">
         <header>
+            <div class="header-links">
+                <a href="mailto:hello@allinc.ai">hello@allinc.ai</a>
+                <a href="https://www.linkedin.com/in/romankliukin" target="_blank" rel="noopener">linkedin.com/in/romankliukin</a>
+            </div>
             <h1>Roman<br>Kliukin</h1>
             <p class="subtitle">Product Manager</p>
             <p class="location">Belgrade, Serbia</p>
@@ -394,13 +373,19 @@
 
                     <div class="experience-item">
                         <p class="company">Yandex</p>
-                        <p class="role">Product Manager → Head of Design</p>
-                        <p class="period">2021 — Present</p>
+                        <p class="role">Product Manager</p>
+                        <p class="period">2022 — Present</p>
                         <ul class="highlights">
                             <li>Grew unique users by 83% to 6.19M YoY</li>
                             <li>Reduced dev cycles by 67%</li>
                             <li>Reached 89% of CS teachers in Russia</li>
                         </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <p class="company">Yandex</p>
+                        <p class="role">Head of Design</p>
+                        <p class="period">2021 — 2022</p>
                     </div>
 
                     <div class="experience-item">
@@ -455,16 +440,6 @@
                         <li>Evidence-based Learning</li>
                     </ul>
 
-                    <div class="os-block">
-                        <code>// my_operating_system.h</code>
-                        <code>VISUAL_LEARNER = true</code>
-                        <code>NEEDS_WORKFLOW_CONTROL = true</code>
-                        <code>COGNITIVE_OVERLOAD_HANDLER = {</code>
-                        <code>&nbsp;&nbsp;checklists,</code>
-                        <code>&nbsp;&nbsp;simple_interfaces,</code>
-                        <code>&nbsp;&nbsp;fixed_sessions</code>
-                        <code>}</code>
-                    </div>
                 </div>
             </div>
         </section>
@@ -485,9 +460,9 @@
                     </a>
                 </div>
                 <div class="contact-item">
-                    <a href="https://linkedin.com/in/romankliukin" target="_blank" rel="noopener">
+                    <a href="https://www.linkedin.com/in/romankliukin" target="_blank" rel="noopener">
                         <span class="contact-label">LinkedIn</span>
-                        /romankliukin
+                        linkedin.com/in/romankliukin
                     </a>
                 </div>
             </div>
