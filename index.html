@@ -302,31 +302,34 @@
             gap: 1rem;
         }
 
-        .contact-label {
-            display: block;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--muted);
-            margin-bottom: 0.5rem;
-        }
-
         .contact-item a {
             color: var(--bg);
             background: var(--fg);
             text-decoration: none;
-            font-size: 16px;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            display: block;
+            display: flex;
+            flex-direction: column;
             padding: 1.5rem 2rem;
             transition: all 0.15s ease;
         }
 
         .contact-item a:hover {
             color: var(--accent);
+        }
+
+        .contact-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            opacity: 0.5;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-value {
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
         footer {
@@ -499,24 +502,34 @@
 
             <div class="contact-grid">
                 <div class="contact-item">
-                    <span class="contact-label">Email</span>
-                    <a href="mailto:hello@allinc.ai">hello@allinc.ai</a>
+                    <a href="mailto:hello@allinc.ai">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">hello@allinc.ai</span>
+                    </a>
                 </div>
                 <div class="contact-item">
-                    <span class="contact-label">Phone</span>
-                    <a href="tel:+381621424895">+381 62 142 4895</a>
+                    <a href="tel:+381621424895">
+                        <span class="contact-label">Phone</span>
+                        <span class="contact-value">+381 62 142 4895</span>
+                    </a>
                 </div>
                 <div class="contact-item">
-                    <span class="contact-label">Social</span>
-                    <a href="https://www.linkedin.com/in/roman-kliukin/" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/roman-kliukin/" target="_blank" rel="noopener">
+                        <span class="contact-label">Social</span>
+                        <span class="contact-value">LinkedIn</span>
+                    </a>
                 </div>
                 <div class="contact-item">
-                    <span class="contact-label">Resume</span>
-                    <a href="https://docs.google.com/document/d/1WkiR09nSAwJDy7E6YqJiDGgJBzoKIqp740ikq_DhN34/edit?tab=t.0#heading=h.72pd2otns95o" target="_blank" rel="noopener">CV</a>
+                    <a href="https://docs.google.com/document/d/1WkiR09nSAwJDy7E6YqJiDGgJBzoKIqp740ikq_DhN34/edit?tab=t.0#heading=h.72pd2otns95o" target="_blank" rel="noopener">
+                        <span class="contact-label">Resume</span>
+                        <span class="contact-value">CV</span>
+                    </a>
                 </div>
                 <div class="contact-item">
-                    <span class="contact-label">Резюме</span>
-                    <a href="https://docs.google.com/document/d/1HHT5RXopo2qIFAmhHvhSCje-okmhsNZQh7J-MDvVlmw/edit?tab=t.0#heading=h.72pd2otns95o" target="_blank" rel="noopener">Скачать</a>
+                    <a href="https://docs.google.com/document/d/1HHT5RXopo2qIFAmhHvhSCje-okmhsNZQh7J-MDvVlmw/edit?tab=t.0#heading=h.72pd2otns95o" target="_blank" rel="noopener">
+                        <span class="contact-label">Резюме</span>
+                        <span class="contact-value">Скачать</span>
+                    </a>
                 </div>
             </div>
         </div>
