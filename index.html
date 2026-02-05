@@ -251,9 +251,31 @@
             font-family: monospace;
         }
 
+        /* CASES SECTION */
+        .cases-section {
+            background: var(--bg);
+            position: relative;
+            padding: 8rem 4rem;
+        }
+
+        .cases-list {
+            list-style: none;
+            padding: 0;
+            padding-left: 1.5rem;
+        }
+
+        .cases-list li {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--accent);
+        }
+
         /* INFORMAL SECTION */
         .informal-section {
-            background: var(--bg);
+            background: #0f0f0f;
             position: relative;
             padding: 8rem 4rem;
         }
@@ -504,26 +526,41 @@
         </div>
     </section>
 
+    <section class="cases-section">
+        <div class="section-content">
+            <h2>Cases</h2>
+
+            <ul class="cases-list">
+                <li>Built a personalized content recommendation system for users based on their interests</li>
+                <li>Automated content tagging using LLMs instead of manual moderation work</li>
+                <li>AI plagiarism detection service that also identifies LLM-generated content</li>
+                <li>AI quiz generation for students across all subjects — models trained on lectures and textbooks</li>
+                <li>Custom DSPy pipelines for client projects — helping companies automate business processes with AI</li>
+                <li>Prototypes apps with vibecoding for rapid hypothesis testing — for example, Marcus Sync app for syncing Reminders with Obsidian</li>
+            </ul>
+        </div>
+    </section>
+
     <section class="informal-section">
         <div class="section-content">
             <h2>Beyond Work</h2>
 
             <div class="informal-content">
                 <div class="philosophy">
-                    <p>I live in Belgrade and try to understand how <strong>complex systems</strong> work — not in theory, but by building things that actually function.</p>
+                    <p>I like to understand how <strong>complex systems</strong> work — not in theory, but by building things that actually work.</p>
 
                     <p>I'm studying LLM Engineering because I want to understand how these technologies work from the inside, not just use them. Currently building <strong>Marcus</strong>, a macOS app for syncing reminders with Obsidian.</p>
 
-                    <p><strong>Stoic philosophy</strong> resonates with me, especially Marcus Aurelius. Not "stoically endure" — but distinguishing what's in your control from what isn't.</p>
+                    <p><strong>Stoic philosophy</strong> resonates with me. Not "stoically endure" — but distinguishing what's in your control from what isn't.</p>
 
-                    <p>That's why I love precise cooking techniques like <strong>sous vide</strong> — control the variables, get predictable results.</p>
+                    <p>Fun fact: that's why I love <strong>sous vide</strong> cooking techniques — control the variables, get predictable results.</p>
                 </div>
 
                 <div>
                     <h3>Interests</h3>
                     <ul class="interests">
                         <li>LLM Engineering</li>
-                        <li>SwiftUI / macOS</li>
+                        <li>macOS / iOS</li>
                         <li>Stoic Philosophy</li>
                         <li>Sous Vide Cooking</li>
                         <li>Learning Science</li>
