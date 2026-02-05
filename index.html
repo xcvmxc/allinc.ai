@@ -43,6 +43,19 @@
             text-transform: uppercase;
         }
 
+        h1 span {
+            display: block;
+        }
+
+        h1 .first-name {
+            color: var(--fg);
+        }
+
+        h1 .last-name {
+            color: transparent;
+            -webkit-text-stroke: 2px var(--fg);
+        }
+
         h2 {
             font-size: clamp(2rem, 5vw, 4rem);
             font-weight: 900;
@@ -336,6 +349,10 @@
                 font-size: clamp(3rem, 15vw, 6rem);
             }
 
+            h1 .last-name {
+                -webkit-text-stroke: 1px var(--fg);
+            }
+
             .header-links a {
                 padding: 1rem;
             }
@@ -359,7 +376,10 @@
 
     <header>
         <div class="header-content">
-            <h1>Roman<br>Kliukin</h1>
+            <h1>
+                <span class="first-name">Roman</span>
+                <span class="last-name">Kliukin</span>
+            </h1>
             <p class="subtitle">Product Manager</p>
             <p class="location">Belgrade, Serbia</p>
         </div>
