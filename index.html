@@ -229,10 +229,11 @@
         }
 
         .company {
-            font-size: 2rem;
-            font-weight: 900;
+            font-size: 16px;
+            color: var(--accent);
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: -0.02em;
+            letter-spacing: 0.1em;
         }
 
         .role {
@@ -271,12 +272,13 @@
         }
 
         .philosophy {
-            font-size: 1.375rem;
-            line-height: 1.8;
+            font-size: 1.5rem;
+            line-height: 1.7;
+            font-weight: 300;
         }
 
         .philosophy p {
-            font-size: 1.375rem;
+            font-size: 1.5rem;
             margin-bottom: 1.5rem;
         }
 
@@ -288,15 +290,25 @@
         .interests {
             list-style: none;
             padding: 0;
+            padding-left: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
         .interests li {
-            padding: 1rem 0;
-            font-size: 16px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+            background: transparent;
             color: var(--fg);
+            padding: 0.75rem 1.5rem;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.15s ease;
+        }
+
+        .interests li:hover {
+            color: var(--accent);
         }
 
         /* CONTACT SECTION */
