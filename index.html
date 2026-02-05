@@ -96,6 +96,27 @@
             z-index: 1;
         }
 
+        .made-with {
+            position: fixed;
+            top: 1.5rem;
+            left: 1.5rem;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            z-index: 100;
+        }
+
+        .made-with a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .made-with a:hover {
+            text-decoration: underline;
+        }
+
         .header-links {
             position: fixed;
             top: 0;
@@ -433,6 +454,8 @@
     </style>
 </head>
 <body>
+    <div class="made-with">Made with Claude in 15 min — please be kind :)</div>
+
     <div class="header-links">
         <a href="mailto:hello@allinc.ai">
             <span class="contact-label">Email</span>
