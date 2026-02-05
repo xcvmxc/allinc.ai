@@ -48,7 +48,8 @@
         }
 
         h1 .first-name {
-            color: var(--fg);
+            color: transparent;
+            -webkit-text-stroke: 2px var(--fg);
         }
 
         h1 .last-name {
@@ -349,6 +350,7 @@
                 font-size: clamp(3rem, 15vw, 6rem);
             }
 
+            h1 .first-name,
             h1 .last-name {
                 -webkit-text-stroke: 1px var(--fg);
             }
@@ -377,7 +379,7 @@
     <header>
         <div class="header-content">
             <h1>
-                <span class="first-name">Roman</span>
+                <span class="first-name">Roma</span>
                 <span class="last-name">Kliukin</span>
             </h1>
             <p class="subtitle">Product Manager</p>
