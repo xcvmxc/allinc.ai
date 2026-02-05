@@ -101,6 +101,7 @@
             top: 0;
             right: 0;
             display: flex;
+            flex-direction: column;
             z-index: 100;
         }
 
@@ -108,17 +109,30 @@
             color: var(--bg);
             background: var(--fg);
             text-decoration: none;
-            font-size: 16px;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            display: block;
+            display: flex;
+            flex-direction: column;
             padding: 1.5rem 2rem;
             transition: all 0.15s ease;
         }
 
         .header-links a:hover {
             color: var(--accent);
+        }
+
+        .header-links .contact-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            opacity: 0.5;
+            margin-bottom: 0.25rem;
+        }
+
+        .header-links .contact-value {
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
         .subtitle {
@@ -354,6 +368,8 @@
 
             .header-links {
                 position: static;
+                flex-direction: row;
+                flex-wrap: wrap;
                 margin-bottom: 2rem;
             }
         }
@@ -384,9 +400,18 @@
 </head>
 <body>
     <div class="header-links">
-        <a href="mailto:hello@allinc.ai">Email</a>
-        <a href="https://www.linkedin.com/in/roman-kliukin/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://docs.google.com/document/d/1WkiR09nSAwJDy7E6YqJiDGgJBzoKIqp740ikq_DhN34/edit?tab=t.0#heading=h.72pd2otns95o" target="_blank" rel="noopener">CV</a>
+        <a href="mailto:hello@allinc.ai">
+            <span class="contact-label">Email</span>
+            <span class="contact-value">hello@allinc.ai</span>
+        </a>
+        <a href="https://www.linkedin.com/in/roman-kliukin/" target="_blank" rel="noopener">
+            <span class="contact-label">LinkedIn</span>
+            <span class="contact-value">roman-kliukin</span>
+        </a>
+        <a href="https://docs.google.com/document/d/1WkiR09nSAwJDy7E6YqJiDGgJBzoKIqp740ikq_DhN34/edit?tab=t.0#heading=h.72pd2otns95o" target="_blank" rel="noopener">
+            <span class="contact-label">CV</span>
+            <span class="contact-value">Product Manager</span>
+        </a>
     </div>
 
     <header>
@@ -515,20 +540,20 @@
                 </div>
                 <div class="contact-item">
                     <a href="https://www.linkedin.com/in/roman-kliukin/" target="_blank" rel="noopener">
-                        <span class="contact-label">Social</span>
-                        <span class="contact-value">LinkedIn</span>
+                        <span class="contact-label">LinkedIn</span>
+                        <span class="contact-value">roman-kliukin</span>
                     </a>
                 </div>
                 <div class="contact-item">
                     <a href="https://docs.google.com/document/d/1WkiR09nSAwJDy7E6YqJiDGgJBzoKIqp740ikq_DhN34/edit?tab=t.0#heading=h.72pd2otns95o" target="_blank" rel="noopener">
-                        <span class="contact-label">Resume</span>
-                        <span class="contact-value">CV</span>
+                        <span class="contact-label">CV</span>
+                        <span class="contact-value">Product Manager</span>
                     </a>
                 </div>
                 <div class="contact-item">
                     <a href="https://docs.google.com/document/d/1HHT5RXopo2qIFAmhHvhSCje-okmhsNZQh7J-MDvVlmw/edit?tab=t.0#heading=h.72pd2otns95o" target="_blank" rel="noopener">
                         <span class="contact-label">Резюме</span>
-                        <span class="contact-value">Скачать</span>
+                        <span class="contact-value">Продакт-менеджер</span>
                     </a>
                 </div>
             </div>
