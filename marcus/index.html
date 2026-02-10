@@ -107,13 +107,24 @@
             padding: 6rem 4rem;
             position: relative;
             z-index: 1;
+            overflow: hidden;
         }
 
         .app-icon {
-            width: 128px;
-            height: 128px;
+            position: absolute;
+            right: -5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: clamp(300px, 45vw, 600px);
+            height: clamp(300px, 45vw, 600px);
             border-radius: 22%;
-            margin-bottom: 2rem;
+            opacity: 0.08;
+            z-index: -1;
+        }
+
+        header > div {
+            position: relative;
+            z-index: 2;
         }
 
         h1 {
