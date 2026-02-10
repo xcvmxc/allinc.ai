@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marcus Sync — Reminders to Markdown for macOS</title>
-    <meta name="description" content="macOS menu bar app that syncs Apple Reminders to any Markdown file. Built for Obsidian users.">
+    <meta name="description" content="Sync your Apple Reminders to any Markdown file. Works with Obsidian, Logseq, or any plain-text editor. Supports Emoji, Dataview, and Kanban formats.">
     <style>
         * {
             margin: 0;
@@ -15,7 +15,8 @@
         :root {
             --bg: #0a0a0a;
             --fg: #ffffff;
-            --accent: #ff3e00;
+            --primary: #FF9F00;
+            --secondary: #7B68EE;
             --muted: #666666;
         }
 
@@ -61,8 +62,6 @@
         }
 
         .header-links a {
-            color: var(--bg);
-            background: var(--fg);
             text-decoration: none;
             display: flex;
             flex-direction: column;
@@ -70,8 +69,18 @@
             transition: all 0.15s ease;
         }
 
+        .header-links .btn-feature {
+            color: var(--bg);
+            background: var(--secondary);
+        }
+
+        .header-links .btn-bug {
+            color: var(--bg);
+            background: var(--primary);
+        }
+
         .header-links a:hover {
-            color: var(--accent);
+            opacity: 0.85;
         }
 
         .contact-label {
@@ -79,7 +88,7 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.15em;
-            opacity: 0.5;
+            opacity: 0.6;
             margin-bottom: 0.25rem;
         }
 
@@ -114,12 +123,12 @@
 
         h1 .app-name {
             color: transparent;
-            -webkit-text-stroke: 2px var(--fg);
+            -webkit-text-stroke: 2px var(--primary);
         }
 
         h1 .app-tag {
             color: transparent;
-            -webkit-text-stroke: 2px var(--fg);
+            -webkit-text-stroke: 2px var(--secondary);
             font-size: clamp(2rem, 6vw, 4rem);
             margin-top: 1rem;
         }
@@ -139,6 +148,25 @@
             margin-top: 0.5rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
+        }
+
+        .cta-test {
+            display: inline-block;
+            margin-top: 2.5rem;
+            padding: 1.25rem 3rem;
+            font-size: 18px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            text-decoration: none;
+            color: var(--bg);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transition: all 0.2s ease;
+        }
+
+        .cta-test:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
         }
 
         h2 {
@@ -169,11 +197,11 @@
             line-height: 1.7;
             font-weight: 300;
             max-width: 800px;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         .about-text strong {
-            color: var(--accent);
+            color: var(--primary);
             font-weight: 600;
         }
 
@@ -198,7 +226,7 @@
 
         .feature {
             padding-left: 1.5rem;
-            border-left: 2px solid var(--accent);
+            border-left: 2px solid var(--primary);
         }
 
         .feature-title {
@@ -235,7 +263,7 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: var(--accent);
+            color: var(--primary);
             margin-bottom: 1rem;
         }
 
@@ -247,7 +275,7 @@
             line-height: 1.8;
             color: var(--fg);
             overflow-x: auto;
-            border-left: 2px solid var(--accent);
+            border-left: 2px solid var(--secondary);
         }
 
         .code-block .comment {
@@ -262,10 +290,32 @@
             color: var(--muted);
         }
 
-        /* FEEDBACK SECTION */
-        .feedback-section {
+        /* PRIVACY SECTION */
+        .privacy-section {
             background: var(--bg);
             padding: 8rem 4rem;
+        }
+
+        .privacy-text {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            font-weight: 300;
+            max-width: 700px;
+        }
+
+        .privacy-text strong {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        /* FEEDBACK SECTION */
+        .feedback-section {
+            background: #0f0f0f;
+            padding: 8rem 4rem;
+        }
+
+        .feedback-section h2 {
+            color: var(--fg);
         }
 
         .feedback-text {
@@ -276,23 +326,37 @@
             margin-bottom: 2rem;
         }
 
+        .feedback-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
         .feedback-link {
             display: inline-flex;
             flex-direction: column;
-            color: var(--bg);
-            background: var(--fg);
             text-decoration: none;
             padding: 1.5rem 2rem;
             transition: all 0.15s ease;
         }
 
+        .feedback-link.btn-feature {
+            color: var(--bg);
+            background: var(--secondary);
+        }
+
+        .feedback-link.btn-bug {
+            color: var(--bg);
+            background: var(--primary);
+        }
+
         .feedback-link:hover {
-            color: var(--accent);
+            opacity: 0.85;
         }
 
         footer {
             padding: 4rem;
-            background: #0f0f0f;
+            background: var(--bg);
             text-align: center;
         }
 
@@ -316,12 +380,13 @@
             }
 
             .about-section,
-            .formats-section {
+            .formats-section,
+            .feedback-section {
                 padding: 6rem 2rem;
             }
 
             .features-section,
-            .feedback-section {
+            .privacy-section {
                 padding: 6rem 2rem;
             }
 
@@ -338,14 +403,22 @@
                 font-size: clamp(3rem, 12vw, 5rem);
             }
 
-            h1 .app-name,
+            h1 .app-name {
+                -webkit-text-stroke: 1px var(--primary);
+            }
+
             h1 .app-tag {
-                -webkit-text-stroke: 1px var(--fg);
+                -webkit-text-stroke: 1px var(--secondary);
             }
 
             .tagline {
                 font-size: 1rem;
                 letter-spacing: 0.3em;
+            }
+
+            .cta-test {
+                padding: 1rem 2rem;
+                font-size: 16px;
             }
         }
     </style>
@@ -354,9 +427,13 @@
     <a href="/" class="back-link">&larr; allinc.ai</a>
 
     <div class="header-links">
-        <a href="https://github.com/xcvmxc/marcus-feedback/issues" target="_blank" rel="noopener">
+        <a href="https://github.com/xcvmxc/marcus-feedback/issues/new?template=feature_request.yml" target="_blank" rel="noopener" class="btn-feature">
             <span class="contact-label">Feedback</span>
-            <span class="contact-value">GitHub Issues</span>
+            <span class="contact-value">Request Feature</span>
+        </a>
+        <a href="https://github.com/xcvmxc/marcus-feedback/issues/new?template=bug_report.yml" target="_blank" rel="noopener" class="btn-bug">
+            <span class="contact-label">Found a Bug?</span>
+            <span class="contact-value">Report Issue</span>
         </a>
     </div>
 
@@ -368,6 +445,7 @@
             </h1>
             <p class="tagline">Reminders &rarr; Markdown</p>
             <p class="platform">macOS 13+ &middot; Menu Bar App</p>
+            <a href="https://testflight.apple.com/join/AaSU4rSS" target="_blank" rel="noopener" class="cta-test">Test Now</a>
         </div>
     </header>
 
@@ -376,11 +454,11 @@
             <h2>What It Does</h2>
 
             <p class="about-text">
-                Marcus Sync lives in your <strong>menu bar</strong> and syncs Apple Reminders to any Markdown file. Built for <strong>Obsidian</strong> users who want their tasks in their vault without manual copy-paste.
+                Marcus Sync lives in your <strong>menu bar</strong> and syncs Apple Reminders to Markdown files &mdash; perfect for <strong>Obsidian</strong>, Logseq, or any text-based productivity system.
             </p>
 
             <p class="about-text">
-                One-way, additive sync. Your <strong>manual edits are preserved</strong> — Marcus only adds new items, never overwrites what you've written.
+                Pick a Reminder list and a Markdown file. Marcus syncs your tasks <strong>automatically on a schedule</strong> or manually. One-way, additive sync &mdash; your manual edits are always preserved.
             </p>
         </div>
     </section>
@@ -392,32 +470,42 @@
             <div class="features-grid">
                 <div class="feature">
                     <p class="feature-title">Menu Bar Only</p>
-                    <p class="feature-desc">No dock icon, no window clutter. Lives quietly in your menu bar.</p>
+                    <p class="feature-desc">No dock icon, always accessible. Lives quietly in your menu bar.</p>
                 </div>
 
                 <div class="feature">
-                    <p class="feature-title">Any Markdown File</p>
-                    <p class="feature-desc">Point it at any .md file — Obsidian vault, Logseq, or plain text notes.</p>
+                    <p class="feature-title">Auto-Sync</p>
+                    <p class="feature-desc">Configurable intervals from 1 minute to 2 hours. Or sync manually anytime.</p>
                 </div>
 
                 <div class="feature">
                     <p class="feature-title">Preserves Manual Edits</p>
-                    <p class="feature-desc">Additive sync only. Your hand-written notes stay untouched.</p>
+                    <p class="feature-desc">One-way additive sync. Never deletes your hand-written notes.</p>
                 </div>
 
                 <div class="feature">
-                    <p class="feature-title">Two Output Formats</p>
-                    <p class="feature-desc">Emoji checkboxes or Dataview-compatible format for advanced queries.</p>
+                    <p class="feature-title">Three Output Formats</p>
+                    <p class="feature-desc">Emoji (Obsidian Tasks), Dataview, and Kanban &mdash; pick the one that fits your workflow.</p>
                 </div>
 
                 <div class="feature">
-                    <p class="feature-title">Smart Validation</p>
-                    <p class="feature-desc">Checks your settings before syncing. Blocking issues prevent sync, warnings let you decide.</p>
+                    <p class="feature-title">Insert Under Header</p>
+                    <p class="feature-desc">Place tasks under a specific heading in your file. Supports #, ##, and ### levels.</p>
+                </div>
+
+                <div class="feature">
+                    <p class="feature-title">Any Markdown File</p>
+                    <p class="feature-desc">Works with any .md or .txt file. Obsidian vault, Logseq, or plain text notes.</p>
+                </div>
+
+                <div class="feature">
+                    <p class="feature-title">Optional Cleanup</p>
+                    <p class="feature-desc">Delete tasks from Reminders after sync if you want a clean list.</p>
                 </div>
 
                 <div class="feature">
                     <p class="feature-title">Native macOS</p>
-                    <p class="feature-desc">Built with SwiftUI and EventKit. No Electron, no web views.</p>
+                    <p class="feature-desc">Built with SwiftUI and EventKit. No Electron, no web views, no bloat.</p>
                 </div>
             </div>
         </div>
@@ -428,39 +516,61 @@
             <h2>Output Formats</h2>
 
             <div class="format-example">
-                <p class="format-label">Emoji Format</p>
+                <p class="format-label">Emoji &mdash; Obsidian Tasks</p>
                 <div class="code-block">
                     <span class="comment">## Reminders</span><br>
-                    <span class="check">&#x2705;</span> Buy groceries<br>
-                    <span class="uncheck">&#x1F7E1;</span> Schedule dentist appointment<br>
-                    <span class="uncheck">&#x1F7E1;</span> Review quarterly report
+                    - [ ] Buy milk &#x1F4C5; 2026-03-15 &#x1F53C;<br>
+                    - [x] Call dentist &#x2705; 2026-03-10
                 </div>
             </div>
 
             <div class="format-example">
-                <p class="format-label">Dataview Format</p>
+                <p class="format-label">Dataview</p>
                 <div class="code-block">
                     <span class="comment">## Reminders</span><br>
-                    - [x] Buy groceries [due:: 2025-01-15] [completed:: 2025-01-14]<br>
-                    - [ ] Schedule dentist appointment [due:: 2025-01-20]<br>
-                    - [ ] Review quarterly report [due:: 2025-01-25]
+                    - [ ] Buy milk [due:: 2026-03-15] [priority:: high]<br>
+                    - [x] Call dentist [due:: 2026-03-10] [completed:: 2026-03-10]
+                </div>
+            </div>
+
+            <div class="format-example">
+                <p class="format-label">Kanban</p>
+                <div class="code-block">
+                    <span class="comment">## Reminders</span><br>
+                    Column-based layout compatible with the Obsidian Kanban plugin
                 </div>
             </div>
         </div>
     </section>
 
+    <section class="privacy-section">
+        <div class="section-content">
+            <h2>Privacy</h2>
+
+            <p class="privacy-text">
+                Marcus only reads your selected Reminder list and writes to your chosen file. <strong>No data leaves your Mac.</strong> No accounts, no cloud, no telemetry. Requires only Reminders permission, requested on first launch.
+            </p>
+        </div>
+    </section>
+
     <section class="feedback-section">
         <div class="section-content">
-            <h2>Feedback &amp; Issues</h2>
+            <h2>Feedback</h2>
 
             <p class="feedback-text">
-                Marcus is in active development. Found a bug or have a feature request? Open an issue on GitHub.
+                Marcus is in active development. Have an idea or found a bug? Let us know on GitHub.
             </p>
 
-            <a href="https://github.com/xcvmxc/marcus-feedback/issues" target="_blank" rel="noopener" class="feedback-link">
-                <span class="contact-label">GitHub</span>
-                <span class="contact-value">Open an Issue</span>
-            </a>
+            <div class="feedback-buttons">
+                <a href="https://github.com/xcvmxc/marcus-feedback/issues/new?template=feature_request.yml" target="_blank" rel="noopener" class="feedback-link btn-feature">
+                    <span class="contact-label">Idea</span>
+                    <span class="contact-value">Request Feature</span>
+                </a>
+                <a href="https://github.com/xcvmxc/marcus-feedback/issues/new?template=bug_report.yml" target="_blank" rel="noopener" class="feedback-link btn-bug">
+                    <span class="contact-label">Bug</span>
+                    <span class="contact-value">Report Issue</span>
+                </a>
+            </div>
         </div>
     </section>
 
